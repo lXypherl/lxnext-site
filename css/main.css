@@ -227,7 +227,7 @@ p {
   color: var(--text-secondary);
   font-weight: var(--font-normal);
   max-width: 42rem;
-  margin-bottom: var(--space-10);
+  margin: 0 auto var(--space-10) auto;
   line-height: var(--leading-relaxed);
 }
 
@@ -317,6 +317,9 @@ section {
 .section-header {
   text-align: center;
   margin-bottom: var(--space-16);
+  max-width: 48rem;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .section-badge {
