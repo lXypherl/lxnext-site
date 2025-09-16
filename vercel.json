@@ -1,6 +1,5 @@
 {
   "version": 2,
-  "name": "lxnext-website",
   "builds": [
     {
       "src": "index.html",
@@ -66,10 +65,5 @@
         }
       ]
     }
-  ],
-  "functions": {
-    "app/api/contact.js": {
-      "maxDuration": 10
-    }
-  }
+  ]
 }
