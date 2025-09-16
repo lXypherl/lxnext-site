@@ -114,4 +114,4 @@ Copyright © 2025 LX Next (Partnership), Philippines. All rights reserved.
 
 ---
 
-**Built with ❤️ by LX Next** - Leading Excellence in AI and Data Science
+**Built with ❤️ by LX Next** - Leading Excellence in Intelligent Solutions
