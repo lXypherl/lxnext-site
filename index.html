@@ -1,777 +1,657 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>LX Next — AI that sees, predicts and automates</title>
-    <style>
-      /* Base resets */
-      * {
-        box-sizing: border-box;
-        margin: 0;
-        padding: 0;
+<head>
+  <!-- Meta Tags -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+  <!-- SEO Meta Tags -->
+  <title>LX Next — The Future of Intelligent Solutions | AI, ML & Data Science Consulting Philippines</title>
+  <meta name="description" content="LX Next delivers next-generation AI, machine learning, and data science solutions across industries in the Philippines. Specializing in computer vision, predictive analytics, ALPR/ANPR, and intelligent automation with open-source technology.">
+  <meta name="keywords" content="AI consulting Philippines, machine learning, data science, computer vision, ALPR, ANPR, predictive analytics, intelligent automation, open source AI, Philippines AI company">
+  <meta name="author" content="LX Next">
+  <meta name="robots" content="index, follow">
+  <meta name="language" content="en">
+  
+  <!-- Open Graph Meta Tags -->
+  <meta property="og:title" content="LX Next — The Future of Intelligent Solutions">
+  <meta property="og:description" content="Philippine-based AI and data science consulting firm delivering next-generation intelligent solutions across industries.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://lxnext.ai">
+  <meta property="og:image" content="https://lxnext.ai/assets/images/company-logo.png">
+  <meta property="og:site_name" content="LX Next">
+  <meta property="og:locale" content="en_US">
+  
+  <!-- Twitter Card Meta Tags -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="LX Next — The Future of Intelligent Solutions">
+  <meta name="twitter:description" content="Philippine-based AI and data science consulting firm delivering next-generation intelligent solutions.">
+  <meta name="twitter:image" content="https://lxnext.ai/assets/images/company-logo.png">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/company-logo.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="./assets/images/company-logo.png">
+  <link rel="apple-touch-icon" href="./assets/images/company-logo.png">
+  
+  <!-- Preload Critical Resources -->
+  <link rel="preload" href="./css/main.css" as="style">
+  <link rel="preload" href="./css/components/navigation.css" as="style">
+  <link rel="preload" href="./css/components/hero.css" as="style">
+  <link rel="preload" href="./js/main.js" as="script">
+  
+  <!-- DNS Prefetch -->
+  <link rel="dns-prefetch" href="//fonts.googleapis.com">
+  <link rel="dns-prefetch" href="//fonts.gstatic.com">
+  
+  <!-- CSS -->
+  <link rel="stylesheet" href="./css/main.css">
+  <link rel="stylesheet" href="./css/components/navigation.css">
+  <link rel="stylesheet" href="./css/components/hero.css">
+  
+  <!-- Schema.org structured data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "LX Next",
+    "legalName": "LX Next (Partnership)",
+    "url": "https://lxnext.ai",
+    "logo": "https://lxnext.ai/assets/images/company-logo.png",
+    "foundingDate": "2025",
+    "founders": [
+      {
+        "@type": "Person",
+        "name": "Reynard Kevin Francisco",
+        "jobTitle": "Founder and CEO"
+      },
+      {
+        "@type": "Person",
+        "name": "Paulo Tesoro",
+        "jobTitle": "Founder and COO"
       }
-      body {
-        font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-        color: #1f2937;
-        background-color: #f8fafc;
-        line-height: 1.6;
-      }
-      a {
-        color: #0a5bdc;
-        text-decoration: none;
-      }
-      a:hover {
-        text-decoration: underline;
-      }
-      h1, h2, h3, h4 {
-        color: #111827;
-        font-weight: 700;
-      }
-      h1 {
-        font-size: 2.5rem;
-        line-height: 1.2;
-      }
-      h2 {
-        font-size: 1.75rem;
-        margin-bottom: 0.5rem;
-      }
-      h3 {
-        font-size: 1.25rem;
-        margin-bottom: 0.25rem;
-      }
-      p {
-        margin-top: 0.25rem;
-      }
-      /* Layout */
-      .container {
-        max-width: 1100px;
-        margin: 0 auto;
-        padding: 0 1rem;
-      }
-      /* Navigation */
-      header {
-        position: sticky;
-        top: 0;
-        background-color: rgba(255, 255, 255, 0.9);
-        backdrop-filter: blur(6px);
-        border-bottom: 1px solid #e5e7eb;
-        z-index: 100;
-      }
-      .nav {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 1rem 0;
-      }
-      .nav a.logo {
-        font-weight: 800;
-        font-size: 1.2rem;
-        display: flex;
-        align-items: center;
-      }
-      .nav nav {
-        display: flex;
-        gap: 1.5rem;
-        align-items: center;
-      }
-      .nav nav a {
-        font-size: 0.95rem;
-        font-weight: 600;
-        color: #374151;
-      }
-      .buttons a {
-        margin-left: 0.75rem;
-        padding: 0.6rem 1rem;
-        border-radius: 6px;
-        font-size: 0.9rem;
-        font-weight: 600;
-      }
-      .btn-primary {
-        background-color: #0a5bdc;
-        color: #fff;
-      }
-      .btn-primary:hover {
-        background-color: #084cb4;
-      }
-      .btn-outline {
-        border: 1px solid #d1d5db;
-        color: #374151;
-        background-color: #fff;
-      }
-      .btn-outline:hover {
-        background-color: #f3f4f6;
-      }
-      /* Hero */
-      .hero {
-        position: relative;
-        /* Lighten the base tone to provide a brighter first impression */
-        background: #0e3054;
-        color: #f9fafb;
-        padding: 4rem 0 6rem;
-        overflow: hidden;
-      }
-      .hero::before {
-        content: "";
-        position: absolute;
-        right: 0;
-        bottom: 0;
-        width: 60%;
-        height: 100%;
-        background-image: url("4105136c-e7fb-431a-b3fd-47cf3766715a.png");
-        background-size: cover;
-        background-position: center;
-        /* Increase opacity to emphasise the texture while keeping text legible */
-        opacity: 0.45;
-      }
-      .hero-content {
-        max-width: 600px;
-        position: relative;
-      }
-      .hero h1 {
-        font-size: 2.75rem;
-        color: #ffffff;
-      }
-      .hero p {
-        margin-top: 1rem;
-        font-size: 1.1rem;
-        color: #e5e7eb;
-      }
-      .hero-buttons {
-        margin-top: 2rem;
-      }
-      .hero-buttons a {
-        display: inline-block;
-        margin-right: 0.75rem;
-        padding: 0.8rem 1.2rem;
-        border-radius: 6px;
-        font-weight: 600;
-        font-size: 1rem;
-      }
-      .hero .btn-primary {
-        background-color: #2563eb;
-        color: white;
-      }
-      .hero .btn-primary:hover {
-        background-color: #1e40af;
-      }
-      .hero .btn-outline {
-        border: 2px solid #3b82f6;
-        color: #3b82f6;
-        background-color: transparent;
-      }
-      .hero .btn-outline:hover {
-        background-color: rgba(59, 130, 246, 0.1);
-      }
-      /* Sections */
-      section {
-        padding: 4rem 0;
-      }
-      section h2 {
-        margin-bottom: 1rem;
-        font-size: 2rem;
-      }
-      section .subtitle {
-        margin-bottom: 2rem;
-        max-width: 600px;
-        color: #6b7280;
-      }
-      /* Services grid */
-      .services-grid {
-        display: grid;
-        gap: 1.5rem;
-        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      }
-      .service-card {
-        padding: 1.5rem;
-        background-color: #ffffff;
-        border: 1px solid #e5e7eb;
-        border-radius: 10px;
-        transition: transform 0.15s ease;
-        display: flex;
-        flex-direction: column;
-      }
-      .service-card:hover {
-        transform: translateY(-3px);
-      }
+    ],
+    "address": {
+      "@type": "PostalAddress",
+      "addressCountry": "Philippines"
+    },
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "contactType": "customer service",
+      "email": "reynard.francisco@lxnext.ai",
+      "telephone": "+639062795780"
+    },
+    "description": "Philippine-based artificial intelligence and data science consulting firm specializing in implementing intelligent solutions across diverse industries.",
+    "services": [
+      "Artificial Intelligence & Machine Learning",
+      "Computer Vision Solutions", 
+      "Systems Integration",
+      "Robotics & Automation",
+      "Creative AI Applications",
+      "Predictive Analytics",
+      "Data Science Consulting"
+    ],
+    "areaServed": "Philippines",
+    "sameAs": [
+      "https://linkedin.com/company/lx-next"
+    ]
+  }
+  </script>
+</head>
 
-      .service-card img {
-        width: 100%;
-        height: auto;
-        border-radius: 8px;
-        margin-bottom: 1rem;
-      }
-      /* Capabilities lists */
-      .capability-lists {
-        display: grid;
-        gap: 2rem;
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      }
-      .capability {
-        border-left: 3px solid #2563eb;
-        padding-left: 1rem;
-      }
-      /* Approach cards */
-      .approach-grid {
-        display: grid;
-        gap: 1.5rem;
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      }
-      .approach-card {
-        background-color: #ffffff;
-        border: 1px solid #e5e7eb;
-        border-radius: 10px;
-        padding: 1.5rem;
-      }
-      /* Integration & Security */
-      .integration-grid {
-        display: grid;
-        gap: 1.5rem;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      }
-      .integration-card {
-        background-color: #ffffff;
-        border: 1px solid #e5e7eb;
-        border-radius: 10px;
-        padding: 1.5rem;
-      }
-      /* Commitments */
-      .commitments-grid {
-        display: grid;
-        gap: 1.5rem;
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      }
-      .commitment {
-        background-color: #ffffff;
-        border: 1px solid #e5e7eb;
-        border-radius: 10px;
-        padding: 1.5rem;
-        text-align: center;
-      }
-      /* Industries list */
-      .industries-list {
-        list-style: none;
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0.5rem 1.5rem;
-        color: #374151;
-        font-weight: 500;
-      }
-      /* About/Leadership */
-      .leadership-grid {
-        display: grid;
-        gap: 1.5rem;
-        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      }
-      .leader-card {
-        background-color: #ffffff;
-        border: 1px solid #e5e7eb;
-        border-radius: 10px;
-        padding: 1.5rem;
-      }
-      /* CTA section */
-      .cta-section {
-        background-color: #1e40af;
-        color: #f9fafb;
-        text-align: center;
-        padding: 3rem 1rem;
-        border-radius: 8px;
-      }
-      .cta-section h2 {
-        font-size: 2rem;
-        margin-bottom: 0.5rem;
-        color: #ffffff;
-      }
-      .cta-section p {
-        margin-bottom: 1.5rem;
-        color: #dbeafe;
-      }
-      .cta-buttons a {
-        margin: 0.5rem;
-        padding: 0.8rem 1.4rem;
-        border-radius: 6px;
-        font-weight: 600;
-        font-size: 1rem;
-      }
-      .cta-primary {
-        background-color: #2563eb;
-        color: #ffffff;
-      }
-      .cta-primary:hover {
-        background-color: #1d4ed8;
-      }
-      .cta-outline {
-        border: 2px solid #93c5fd;
-        color: #93c5fd;
-        background-color: transparent;
-      }
-      .cta-outline:hover {
-        background-color: rgba(147, 197, 253, 0.15);
-      }
-      /* Trusted by / Success stories */
-      .trusted {
-        padding: 4rem 0;
-        background-color: #f8fafc;
-      }
-      .trusted h2 {
-        margin-bottom: 1rem;
-        font-size: 2rem;
-      }
-      .trusted p.subtitle {
-        max-width: 700px;
-        color: #6b7280;
-        margin-bottom: 2rem;
-      }
-      .trusted-stories {
-        display: grid;
-        gap: 1.5rem;
-        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      }
-      .story {
-        background-color: #ffffff;
-        border: 1px solid #e5e7eb;
-        border-radius: 10px;
-        padding: 1.5rem;
-      }
-      .story h4 {
-        font-size: 1.1rem;
-        margin-bottom: 0.5rem;
-        color: #111827;
-      }
-      .story p {
-        color: #6b7280;
-      }
+<body>
+  <!-- Skip to main content for accessibility -->
+  <a href="#main" class="skip-link sr-only">Skip to main content</a>
+  
+  <!-- Scroll Progress Indicator -->
+  <div class="scroll-progress" style="position: fixed; top: 0; left: 0; width: 100%; height: 3px; background: linear-gradient(90deg, var(--color-primary), var(--color-accent)); transform: scaleX(0); transform-origin: left; z-index: 9999; transition: transform 0.1s ease;"></div>
 
-      /* News & Insights */
-      .news {
-        padding: 4rem 0;
-      }
-      .news h2 {
-        font-size: 2rem;
-        margin-bottom: 1rem;
-      }
-      .news-grid {
-        display: grid;
-        gap: 1.5rem;
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-        margin-top: 2rem;
-      }
-      .news-card {
-        background-color: #ffffff;
-        border: 1px solid #e5e7eb;
-        border-radius: 10px;
-        padding: 1.5rem;
-      }
-      .news-card h4 {
-        font-size: 1.25rem;
-        margin-bottom: 0.5rem;
-        color: #111827;
-      }
-      .news-card p {
-        color: #6b7280;
-        margin-bottom: 1rem;
-      }
-      .news-card a {
-        color: #2563eb;
-        font-weight: 600;
-      }
-
-      /* Join Our Team */
-      .join-team {
-        padding: 4rem 0;
-        background-color: #e0f2fe;
-        text-align: center;
-      }
-      .join-team h2 {
-        font-size: 2rem;
-        margin-bottom: 0.5rem;
-      }
-      .join-team p {
-        color: #374151;
-        margin-bottom: 1.5rem;
-        max-width: 700px;
-        margin-left: auto;
-        margin-right: auto;
-      }
-
-      .join-team .btn-primary {
-        background-color: #2563eb;
-        color: #ffffff;
-        padding: 0.8rem 1.4rem;
-        border-radius: 6px;
-        font-weight: 600;
-        font-size: 1rem;
-      }
-      .join-team .btn-primary:hover {
-        background-color: #1d4ed8;
-      }
-
-      /* Footer */
-      footer {
-        background-color: #111827;
-        color: #9ca3af;
-        padding: 3rem 1rem;
-      }
-      .footer-grid {
-        display: grid;
-        gap: 2rem;
-        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-        margin-bottom: 2rem;
-      }
-      footer h4 {
-        font-size: 1.1rem;
-        margin-bottom: 0.75rem;
-        color: #ffffff;
-      }
-      footer ul {
-        list-style: none;
-        padding: 0;
-      }
-      footer ul li {
-        margin-bottom: 0.5rem;
-      }
-      footer a {
-        color: #9ca3af;
-      }
-      footer a:hover {
-        color: #ffffff;
-      }
-    </style>
-  </head>
-  <body>
-    <!-- Header/Nav -->
-    <header>
-      <div class="container nav">
-        <a href="#" class="logo">LX Next</a>
-        <nav class="desktop-menu">
-          <a href="#services">Services</a>
-          <a href="#approach">Approach</a>
-          <a href="#integration">Integration &amp; Security</a>
-          <a href="#news">Insights</a>
-          <a href="#industries">Industries</a>
-          <a href="#about">About</a>
-          <a href="#careers">Careers</a>
-        </nav>
-        <div class="buttons">
-          <a href="#demo" class="btn-outline">Watch demo</a>
-          <a href="#contact" class="btn-primary">Book discovery</a>
-        </div>
+  <!-- Navigation -->
+  <header class="navbar" role="banner">
+    <div class="container navbar-container">
+      <a href="#" class="navbar-brand" aria-label="LX Next - Home">
+        <img src="./Logo.png" alt="LX Next Logo" width="40" height="40" loading="eager">
+        <span>LX Next</span>
+      </a>
+      
+      <nav class="navbar-nav" role="navigation" aria-label="Main navigation">
+        <ul>
+          <li><a href="#services" class="nav-link">Services</a></li>
+          <li><a href="#approach" class="nav-link">Approach</a></li>
+          <li><a href="#technology" class="nav-link">Technology</a></li>
+          <li><a href="#industries" class="nav-link">Industries</a></li>
+          <li><a href="#about" class="nav-link">About</a></li>
+          <li><a href="#contact" class="nav-link">Contact</a></li>
+        </ul>
+      </nav>
+      
+      <div class="navbar-actions">
+        <a href="#demo" class="btn btn-ghost">View Demo</a>
+        <a href="#contact" class="btn btn-primary">Book Discovery</a>
       </div>
-    </header>
+      
+      <button class="mobile-menu-toggle" aria-label="Toggle mobile menu" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" aria-hidden="true">
+      <nav class="mobile-nav">
+        <a href="#services" class="nav-link">Services</a>
+        <a href="#approach" class="nav-link">Approach</a>
+        <a href="#technology" class="nav-link">Technology</a>
+        <a href="#industries" class="nav-link">Industries</a>
+        <a href="#about" class="nav-link">About</a>
+        <a href="#contact" class="nav-link">Contact</a>
+      </nav>
+      <div class="mobile-actions">
+        <a href="#demo" class="btn btn-secondary">View Demo</a>
+        <a href="#contact" class="btn btn-primary">Book Discovery</a>
+      </div>
+    </div>
+  </header>
 
+  <!-- Main Content -->
+  <main id="main" role="main">
+    
     <!-- Hero Section -->
-    <section class="hero">
-      <div class="container hero-content">
-        <h1>
-          AI that <span style="color:#3b82f6">sees</span>, <span style="color:#3b82f6">predicts</span>, and <span style="color:#3b82f6">automates</span>
-        </h1>
-        <p>
-          We design and deploy production‑grade systems for computer vision, analytics and workflow automation—delivered on‑premises, hybrid or cloud with an open‑source preferred approach.
-        </p>
-        <div class="hero-buttons">
-          <a href="#contact" class="btn-primary">Book a 30‑min discovery</a>
-          <a href="#demo" class="btn-outline">Watch 2‑min demo</a>
+    <section class="hero" role="banner">
+      <div class="hero-pattern"></div>
+      <div class="container">
+        <div class="hero-content">
+          <h1>
+            The Future of <span class="hero-highlight">Intelligent Solutions</span>
+          </h1>
+          <p class="lead">
+            LX Next delivers next-generation AI, machine learning, and data science solutions that seamlessly integrate across industries. We transform operations through advanced computer vision, predictive analytics, and intelligent automation.
+          </p>
+          <div class="hero-actions">
+            <div class="btn-group">
+              <a href="#contact" class="btn btn-primary btn-lg">Book 30-min Discovery</a>
+              <a href="#demo" class="btn btn-secondary btn-lg">Watch Demo</a>
+            </div>
+          </div>
+          <div class="hero-stats">
+            <div class="hero-stat">
+              <span class="stat-number">2025</span>
+              <span class="stat-label">Founded</span>
+            </div>
+            <div class="hero-stat">
+              <span class="stat-number">7+</span>
+              <span class="stat-label">Industries Served</span>
+            </div>
+            <div class="hero-stat">
+              <span class="stat-number">100%</span>
+              <span class="stat-label">Open Source Focus</span>
+            </div>
+            <div class="hero-stat">
+              <span class="stat-number">24/7</span>
+              <span class="stat-label">Support Available</span>
+            </div>
+          </div>
         </div>
       </div>
+      
+      <!-- Scroll Indicator -->
+      <div class="scroll-indicator">
+        <div class="scroll-indicator-text">Scroll to explore</div>
+        <div class="scroll-indicator-arrow"></div>
+      </div>
+      
+      <!-- Floating Elements -->
+      <div class="hero-float-element">🤖</div>
+      <div class="hero-float-element">📈</div>
+      <div class="hero-float-element">🔗</div>
     </section>
 
     <!-- Services Section -->
-    <section id="services">
+    <section id="services" class="section-lg">
       <div class="container">
-        <h2>Core Services</h2>
-        <p class="subtitle">Outcome‑driven capabilities delivered with enterprise rigor.</p>
-        <div class="services-grid">
-          <div class="service-card">
-            <img src="d74e3764-1017-4451-a6ad-16bb95db6cbb.png" alt="AI Agents &amp; Applications" />
-            <h3>AI Agents &amp; Applications</h3>
-            <p>Task‑specific assistants that understand SOPs, orchestrate workflows, and connect to ERP/CRM/ITSM via secure APIs.</p>
-          </div>
-          <div class="service-card">
-            <img src="9a80d536-a5a9-439b-9090-28ab425cd1e3.png" alt="Computer Vision" />
-            <h3>Computer Vision</h3>
-            <p>ALPR/ANPR, PPE &amp; safety, people/vehicle counting, and visual QC with low‑latency edge inference and centralized monitoring.</p>
-          </div>
-          <div class="service-card">
-            <img src="d3a6916f-8ec0-42d4-9c15-4887ccc2db3f.png" alt="Predictive Intelligence" />
-            <h3>Predictive Intelligence</h3>
-            <p>Time‑series models validated by backtesting, Monte Carlo scenarios, and executive dashboards with confidence intervals.</p>
-          </div>
-          <div class="service-card">
-            <img src="159c0e0f-0e26-4dee-90c0-4537570c7a1e.png" alt="Robotics &amp; Industrial Automation" />
-            <h3>Robotics &amp; Industrial Automation</h3>
-            <p>PLC/MCU integration, sensor/actuator control, telemetry pipelines and digital twins for testing and optimization.</p>
-          </div>
-          <div class="service-card">
-            <img src="a9fcc754-32b4-4490-aaab-b18dc384c4c3.png" alt="Systems Integration &amp; Architecture" />
-            <h3>Systems Integration &amp; Architecture</h3>
-            <p>Secure data pipelines, canonical data models (SQL &amp; dbt), and service layers spanning edge, on‑premises and cloud.</p>
-          </div>
-          <div class="service-card">
-            <img src="1dcb803d-431c-4449-ae09-e49f9972ecc1.png" alt="Software Engineering" />
-            <h3>Software Engineering</h3>
-            <p>Full‑stack services and operator UIs, API design, reliability engineering, testing and ongoing maintenance.</p>
-          </div>
+        <div class="section-header">
+          <span class="section-badge">Core Services</span>
+          <h2>Intelligent Solutions Across Industries</h2>
+          <p class="subtitle">
+            We design and deploy production-grade AI systems delivered on-premises, hybrid, or cloud with an open-source preferred approach for maximum flexibility and cost-effectiveness.
+          </p>
         </div>
-
-        <!-- Capabilities section as lists -->
-        <div class="capability-lists" style="margin-top: 3rem;">
-          <div class="capability">
-            <h4>Artificial Intelligence &amp; Machine Learning</h4>
-            <ul>
-              <li>Predictive analytics and forecasting models</li>
-              <li>Classification and anomaly detection</li>
-              <li>Custom model development and deployment</li>
-              <li>Open‑source technology implementation</li>
-            </ul>
-          </div>
-          <div class="capability">
-            <h4>Computer Vision Solutions</h4>
-            <ul>
-              <li>License plate recognition (ALPR/ANPR)</li>
-              <li>Object detection and classification</li>
-              <li>Real‑time video analytics</li>
-              <li>Quality control automation</li>
-            </ul>
-          </div>
-          <div class="capability">
-            <h4>Systems Integration</h4>
-            <ul>
-              <li>Cloud‑to‑edge connectivity</li>
-              <li>IoT device integration</li>
-              <li>Real‑time data processing pipelines</li>
-              <li>Cross‑platform system architecture</li>
-            </ul>
-          </div>
-          <div class="capability">
-            <h4>Robotics &amp; Automation</h4>
-            <ul>
-              <li>Intelligent robotic process automation</li>
-              <li>Hardware control systems with AI</li>
-              <li>Industrial automation solutions</li>
-              <li>Smart sensor integration</li>
-            </ul>
-          </div>
-          <div class="capability">
-            <h4>Creative AI Applications</h4>
-            <ul>
-              <li>AI‑powered VTuber creation</li>
-              <li>Virtual personality development</li>
-              <li>Interactive content generation</li>
-              <li>Synthetic media solutions</li>
-            </ul>
-          </div>
-          <div class="capability">
-            <h4>Hardware &amp; Platforms</h4>
-            <ul>
-              <li>Cameras &amp; sensors (CCTV/IP, thermal, temperature, rain, distance, motion, light)</li>
-              <li>Microcontrollers/PLCs and actuators (servo, DC, linear, conveyors)</li>
-              <li>Accelerators: NVIDIA Jetson Orin/Thor, Hailo‑8/15, Google TPU (where applicable)</li>
-              <li>Compute: Intel NUC, Raspberry Pi 5, Android/iOS devices</li>
-            </ul>
-          </div>
+        
+        <div class="grid grid-auto-fill gap-8">
+          <article class="card service-card">
+            <div class="card-header">
+              <img src="./assets/images/ai-agents.png" alt="AI Agents & Applications" width="300" height="200" loading="lazy">
+            </div>
+            <div class="card-content">
+              <h3>🤖 AI Agents & Applications</h3>
+              <p>Task-specific assistants that understand SOPs, orchestrate workflows, and connect to ERP/CRM/ITSM via secure APIs. Custom AI model development and deployment with intelligent process automation.</p>
+            </div>
+          </article>
+          
+          <article class="card service-card">
+            <div class="card-header">
+              <img src="./assets/images/computer-vision.png" alt="Computer Vision Solutions" width="300" height="200" loading="lazy">
+            </div>
+            <div class="card-content">
+              <h3>👁️ Computer Vision Solutions</h3>
+              <p>ALPR/ANPR systems, PPE & safety monitoring, people/vehicle counting, and visual quality control with low-latency edge inference and centralized monitoring capabilities.</p>
+            </div>
+          </article>
+          
+          <article class="card service-card">
+            <div class="card-header">
+              <img src="./assets/images/predictive-intelligence.png" alt="Predictive Intelligence" width="300" height="200" loading="lazy">
+            </div>
+            <div class="card-content">
+              <h3>📈 Predictive Intelligence</h3>
+              <p>Time-series models validated by backtesting, Monte Carlo scenarios, and executive dashboards with confidence intervals. Advanced forecasting and anomaly detection systems.</p>
+            </div>
+          </article>
+          
+          <article class="card service-card">
+            <div class="card-header">
+              <img src="./assets/images/systems-integration.png" alt="Systems Integration" width="300" height="200" loading="lazy">
+            </div>
+            <div class="card-content">
+              <h3>🔗 Systems Integration</h3>
+              <p>Cloud-to-edge connectivity, IoT device integration, real-time data processing pipelines, and cross-platform system architecture. Seamless integration with existing infrastructure.</p>
+            </div>
+          </article>
+          
+          <article class="card service-card">
+            <div class="card-header">
+              <img src="./assets/images/robotics-automation.png" alt="Robotics & Automation" width="300" height="200" loading="lazy">
+            </div>
+            <div class="card-content">
+              <h3>🦾 Robotics & Automation</h3>
+              <p>Intelligent robotic process automation, hardware control systems with AI, industrial automation solutions, and smart sensor integration for comprehensive workflow optimization.</p>
+            </div>
+          </article>
+          
+          <article class="card service-card">
+            <div class="card-header">
+              <img src="./assets/images/creative-ai.png" alt="Creative AI Applications" width="300" height="200" loading="lazy">
+            </div>
+            <div class="card-content">
+              <h3>🎨 Creative AI Applications</h3>
+              <p>AI-powered VTuber creation, virtual personality development, interactive content generation, and synthetic media solutions for entertainment and marketing applications.</p>
+            </div>
+          </article>
         </div>
       </div>
     </section>
 
     <!-- Approach Section -->
-    <section id="approach" style="background-color:#f8fafc;">
+    <section id="approach" class="bg-secondary">
       <div class="container">
-        <h2>How We Deliver</h2>
-        <div class="approach-grid">
-          <div class="approach-card">
-            <h3>Discovery &amp; PoC</h3>
-            <p>4–6 weeks: requirements, site/data audit, success metrics and a working demo on your feeds and data.</p>
+        <div class="section-header">
+          <span class="section-badge">Our Methodology</span>
+          <h2>Open Source. Transparent. Effective.</h2>
+          <p class="subtitle">
+            We leverage primarily open source technologies to deliver cost-effective, transparent, and customizable solutions that avoid vendor lock-in while maintaining enterprise-grade reliability.
+          </p>
+        </div>
+        
+        <div class="grid grid-auto-fit gap-8">
+          <div class="card approach-card">
+            <div class="approach-number">1</div>
+            <h3>Discovery & Proof of Concept</h3>
+            <p class="text-brand mb-2"><strong>4-6 weeks</strong></p>
+            <p>Requirements analysis, algorithm development, performance benchmarking, and feasibility validation with rapid prototyping.</p>
           </div>
-          <div class="approach-card">
-            <h3>Pilot</h3>
-            <p>8–12 weeks: production‑ready build, training, acceptance testing and runbooks for operations.</p>
+          
+          <div class="card approach-card">
+            <div class="approach-number">2</div>
+            <h3>Pilot Implementation</h3>
+            <p class="text-brand mb-2"><strong>8-12 weeks</strong></p>
+            <p>Production-ready development, real-world testing, user training, and system integration with your existing infrastructure.</p>
           </div>
-          <div class="approach-card">
-            <h3>Production &amp; Scale</h3>
-            <p>Multi‑site rollout, centralized monitoring, SLAs and continuous improvement.</p>
+          
+          <div class="card approach-card">
+            <div class="approach-number">3</div>
+            <h3>Production Scaling</h3>
+            <p class="text-brand mb-2"><strong>6-8 weeks per expansion</strong></p>
+            <p>Multi-location deployment, centralized monitoring, advanced analytics, and performance optimization across your organization.</p>
+          </div>
+          
+          <div class="card approach-card">
+            <div class="approach-number">4</div>
+            <h3>Ongoing Support & Optimization</h3>
+            <p class="text-brand mb-2"><strong>Continuous</strong></p>
+            <p>Continuous improvement, system maintenance, technology updates, and evolution with your growing business needs.</p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Integration & Security Section -->
-    <section id="integration">
+    <!-- Technology Stack Section -->
+    <section id="technology">
       <div class="container">
-        <h2>Integration &amp; Security</h2>
-        <div class="integration-grid">
-          <div class="integration-card">
-            <h3>Interoperability by design</h3>
-            <p>Standards‑based REST (OpenAPI), eventing/webhooks, SSO/OAuth2 with role‑based access, optional mTLS within LAN/VPN and secure file drops for legacy systems.</p>
-          </div>
-          <div class="integration-card">
-            <h3>Security &amp; governance</h3>
-            <p>Encryption in transit, audit logging, versioned artifacts, SBOM &amp; vulnerability scanning, documented backup/restore procedures and no‑egress options when required.</p>
-          </div>
+        <div class="section-header">
+          <span class="section-badge">Technology Excellence</span>
+          <h2>Cutting-Edge Tech Stack</h2>
+          <p class="subtitle">
+            We use industry-leading frameworks and tools to deliver robust, scalable solutions that integrate seamlessly with your existing systems.
+          </p>
         </div>
-      </div>
-    </section>
-
-    <!-- Trusted by & Success Stories Section -->
-    <section class="trusted">
-      <div class="container">
-        <h2>Trusted by Leading Enterprises</h2>
-        <p class="subtitle">Partnering with organizations across transportation, manufacturing, campuses and more to drive measurable impact.</p>
-        <div class="trusted-stories">
-          <div class="story">
-            <h4>Transportation &amp; Logistics</h4>
-            <p>Achieved &gt;95% license plate recognition accuracy and reduced gate processing times to under 3 seconds.</p>
+        
+        <div class="grid grid-auto-fit gap-8">
+          <div class="card feature-item">
+            <div class="flex items-start gap-4">
+              <div class="feature-icon">🧠</div>
+              <div>
+                <h4>AI/ML Frameworks</h4>
+                <p>TensorFlow, PyTorch, Scikit-learn, YOLOv8/v10, OpenCV, PaddleOCR, EasyOCR, TrOCR for comprehensive machine learning solutions.</p>
+              </div>
+            </div>
           </div>
-          <div class="story">
-            <h4>Manufacturing</h4>
-            <p>Deployed vision‑based quality control that cut defects by 20% and improved worker safety compliance.</p>
+          
+          <div class="card feature-item">
+            <div class="flex items-start gap-4">
+              <div class="feature-icon">🚀</div>
+              <div>
+                <h4>Deployment & Integration</h4>
+                <p>Docker, Kubernetes, ONNX, TensorRT, AWS, Google Cloud, Azure integration with edge computing support via NVIDIA Jetson and Intel NUC.</p>
+              </div>
+            </div>
           </div>
-          <div class="story">
-            <h4>Campuses &amp; Properties</h4>
-            <p>Implemented people &amp; vehicle analytics to enhance security and reduce incident response times by 30%.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- News & Insights Section -->
-    <section class="news" id="news">
-      <div class="container">
-        <h2>News &amp; Insights</h2>
-        <div class="news-grid">
-          <div class="news-card">
-            <h4>AI in Logistics: Reducing Delays</h4>
-            <p>Discover how predictive analytics and vision systems streamline yard operations, cutting truck turnaround times by 25%.</p>
-            <a href="#">Learn more</a>
-          </div>
-          <div class="news-card">
-            <h4>Manufacturing Quality Reinvented</h4>
-            <p>See how edge‑deployed computer vision catches defects in real time and feeds continuous improvement initiatives.</p>
-            <a href="#">Learn more</a>
-          </div>
-          <div class="news-card">
-            <h4>Smart Campuses: Safer &amp; Smarter</h4>
-            <p>Explore the role of AI agents and digital twins in creating safer, more efficient campuses and properties.</p>
-            <a href="#">Learn more</a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Join Our Team Section -->
-    <section class="join-team" id="careers">
-      <div class="container">
-        <h2>Join Our Team</h2>
-        <p>We're growing and looking for talented engineers, data scientists and project managers to build the future of AI. If you're driven by innovation and thrive in dynamic environments, we’d love to hear from you.</p>
-        <a href="#contact" class="btn-primary">See careers</a>
-      </div>
-    </section>
-
-    <!-- Our Commitments Section -->
-    <section style="background-color:#f8fafc;">
-      <div class="container">
-        <h2>Our Commitments</h2>
-        <div class="commitments-grid">
-          <div class="commitment">
-            <h3>Leveraging Expertise</h3>
-            <p>Deep, hands‑on engineering and architecture applied to real operations.</p>
-          </div>
-          <div class="commitment">
-            <h3>Learning, Exploring, Leading</h3>
-            <p>Continuous R&amp;D combined with disciplined delivery.</p>
-          </div>
-          <div class="commitment">
-            <h3>Linking eXperiences</h3>
-            <p>Integrations that make tools, teams and data work together.</p>
-          </div>
-          <div class="commitment">
-            <h3>Lifting eXpectations</h3>
-            <p>Clear SLAs, measurable results and continuous improvement.</p>
+          
+          <div class="card feature-item">
+            <div class="flex items-start gap-4">
+              <div class="feature-icon">⚡</div>
+              <div>
+                <h4>Development & Architecture</h4>
+                <p>Python, C++, JavaScript, REST APIs, microservices architecture, real-time data processing pipelines, and custom hardware integration.</p>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </section>
 
     <!-- Industries Section -->
-    <section id="industries">
+    <section id="industries" class="bg-secondary">
       <div class="container">
-        <h2>Industries We Serve</h2>
-        <ul class="industries-list">
-          <li>Transportation &amp; Logistics</li>
-          <li>Manufacturing</li>
-          <li>Campuses &amp; LGUs</li>
-          <li>Property Management</li>
-          <li>Financial Services</li>
-          <li>Healthcare</li>
-          <li>Entertainment</li>
-        </ul>
+        <div class="section-header">
+          <span class="section-badge">Industries We Serve</span>
+          <h2>Expertise Across Multiple Sectors</h2>
+          <p class="subtitle">
+            Our AI solutions are tailored to meet the unique challenges and requirements of diverse industries across the Philippines and beyond.
+          </p>
+        </div>
+        
+        <div class="grid grid-auto-fit gap-6">
+          <div class="card industry-item">
+            <div class="flex items-center gap-4">
+              <div class="industry-icon">🚛</div>
+              <div>
+                <h4>Transportation & Logistics</h4>
+                <p class="text-secondary">Toll systems, fleet management, traffic monitoring, route optimization</p>
+              </div>
+            </div>
+          </div>
+          
+          <div class="card industry-item">
+            <div class="flex items-center gap-4">
+              <div class="industry-icon">🏭</div>
+              <div>
+                <h4>Manufacturing</h4>
+                <p class="text-secondary">Quality control, predictive maintenance, process optimization, supply chain analytics</p>
+              </div>
+            </div>
+          </div>
+          
+          <div class="card industry-item">
+            <div class="flex items-center gap-4">
+              <div class="industry-icon">🏦</div>
+              <div>
+                <h4>Financial Services</h4>
+                <p class="text-secondary">Fraud detection, risk assessment, predictive modeling, algorithmic trading support</p>
+              </div>
+            </div>
+          </div>
+          
+          <div class="card industry-item">
+            <div class="flex items-center gap-4">
+              <div class="industry-icon">🏥</div>
+              <div>
+                <h4>Healthcare</h4>
+                <p class="text-secondary">Medical imaging, patient analytics, diagnostic support, treatment outcome prediction</p>
+              </div>
+            </div>
+          </div>
+          
+          <div class="card industry-item">
+            <div class="flex items-center gap-4">
+              <div class="industry-icon">🎬</div>
+              <div>
+                <h4>Entertainment</h4>
+                <p class="text-secondary">AI content creation, virtual personalities, interactive media, streaming technology</p>
+              </div>
+            </div>
+          </div>
+          
+          <div class="card industry-item">
+            <div class="flex items-center gap-4">
+              <div class="industry-icon">🏫</div>
+              <div>
+                <h4>Campuses & LGUs</h4>
+                <p class="text-secondary">Smart campus solutions, public safety, resource optimization, citizen services</p>
+              </div>
+            </div>
+          </div>
+          
+          <div class="card industry-item">
+            <div class="flex items-center gap-4">
+              <div class="industry-icon">🏢</div>
+              <div>
+                <h4>Property Management</h4>
+                <p class="text-secondary">Building automation, security systems, energy optimization, tenant services</p>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
     <!-- About Section -->
-    <section id="about" style="background-color:#f8fafc;">
+    <section id="about">
       <div class="container">
-        <h2>About LX Next</h2>
-        <p style="max-width: 700px; margin-bottom: 2rem;">LX Next is a Philippine‑based AI and data science consulting firm. We bridge cutting‑edge AI, machine learning and data engineering with practical business applications—delivering outcome‑driven systems with enterprise rigor. Deployments are on‑premises, hybrid or cloud with an open‑source preferred approach to minimize lock‑in.</p>
-        <div class="leadership-grid">
-          <div class="leader-card">
+        <div class="section-header">
+          <span class="section-badge">Leadership Team</span>
+          <h2>About LX Next</h2>
+          <p class="subtitle">
+            LX Next is a Philippine-based AI and data science consulting firm. We bridge cutting-edge AI, machine learning and data engineering with practical business applications—delivering outcome-driven systems with enterprise rigor.
+          </p>
+        </div>
+        
+        <div class="grid grid-cols-2 gap-8 mb-12">
+          <div class="card leader-card">
+            <div class="leader-avatar">RK</div>
             <h3>Reynard Kevin Francisco</h3>
-            <p><strong>CEO &amp; CTO</strong></p>
-            <p>Solutions architect across AI/ML, computer vision, forecasting and systems integration. Leads strategy, technology and client outcomes.</p>
+            <p class="text-brand mb-3"><strong>Founder and CEO</strong></p>
+            <p>Founding partner and technology leader with expertise in artificial intelligence, machine learning, and systems integration. Oversees company vision, strategic direction, and client relations as CEO while leading technical innovation, AI/ML architecture, and R&D initiatives as CTO.</p>
           </div>
-          <div class="leader-card">
+          
+          <div class="card leader-card">
+            <div class="leader-avatar">PT</div>
             <h3>Paulo Tesoro</h3>
-            <p><strong>COO &amp; CFO</strong></p>
-            <p>Oversees operations, partnerships, delivery governance, compliance and commercial management.</p>
+            <p class="text-brand mb-3"><strong>Founder and COO</strong></p>
+            <p>Founding partner responsible for day-to-day business operations and project management. Manages operational excellence, partnership development, and process optimization while ensuring delivery of high-quality solutions and maintaining client satisfaction.</p>
+          </div>
+        </div>
+        
+        <!-- Company Values -->
+        <div class="text-center">
+          <h3 class="mb-8">What We Stand For</h3>
+          <div class="grid grid-cols-4 gap-6">
+            <div>
+              <h4 class="text-brand">Leveraging Expertise</h4>
+              <p class="text-secondary">Deep technical knowledge applied to real business challenges</p>
+            </div>
+            <div>
+              <h4 class="text-brand">Learning, Exploring, Leading</h4>
+              <p class="text-secondary">Continuous innovation and technology advancement</p>
+            </div>
+            <div>
+              <h4 class="text-brand">Linking Experiences</h4>
+              <p class="text-secondary">Connecting diverse technologies into unified solutions</p>
+            </div>
+            <div>
+              <h4 class="text-brand">Lifting Expectations</h4>
+              <p class="text-secondary">Exceeding client expectations with exceptional results</p>
+            </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- CTA Section -->
-    <section class="cta-section" id="contact">
-      <h2>Turn cameras, sensors and data into decisions</h2>
-      <p>Get a rapid feasibility readout and a working demo on your environment.</p>
-      <div class="cta-buttons">
-        <a href="#contact" class="cta-primary">Book a 30‑min discovery</a>
-        <a href="mailto:contact@your-domain.com" class="cta-outline">Email us</a>
+    <!-- Contact Section -->
+    <section id="contact" class="bg-dark text-inverse py-24">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="text-inverse">Turn Vision Into Intelligent Reality</h2>
+          <p class="subtitle text-inverse">
+            Ready to transform your operations with next-generation AI solutions? Let's discuss your specific challenges and explore how we can deliver measurable impact.
+          </p>
+        </div>
+        
+        <div class="grid grid-cols-2 gap-12 items-start">
+          <div>
+            <h3 class="text-inverse mb-6">Get In Touch</h3>
+            <div class="space-y-4">
+              <div class="flex items-start gap-4">
+                <div class="text-2xl">📧</div>
+                <div>
+                  <h4 class="text-inverse">Email</h4>
+                  <p class="text-secondary">reynard.francisco@lxnext.ai</p>
+                </div>
+              </div>
+              <div class="flex items-start gap-4">
+                <div class="text-2xl">📱</div>
+                <div>
+                  <h4 class="text-inverse">Phone</h4>
+                  <p class="text-secondary">+639062795780</p>
+                </div>
+              </div>
+              <div class="flex items-start gap-4">
+                <div class="text-2xl">📍</div>
+                <div>
+                  <h4 class="text-inverse">Location</h4>
+                  <p class="text-secondary">Philippines</p>
+                </div>
+              </div>
+            </div>
+            
+            <div class="mt-8">
+              <h4 class="text-inverse mb-4">Quick Start Options</h4>
+              <div class="btn-group flex-col items-start">
+                <a href="#" class="btn btn-primary btn-lg w-full">📅 Book 30-min Discovery Call</a>
+                <a href="#" class="btn btn-secondary btn-lg w-full">🎥 Watch 2-min Demo Video</a>
+                <a href="#" class="btn btn-ghost btn-lg w-full">📄 Download Capability Overview</a>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Contact Form -->
+          <div class="card">
+            <form class="contact-form space-y-6">
+              <div class="field-wrapper">
+                <label for="name" class="block text-sm font-medium mb-2">Full Name *</label>
+                <input type="text" id="name" name="name" required class="w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+              </div>
+              
+              <div class="field-wrapper">
+                <label for="email" class="block text-sm font-medium mb-2">Email Address *</label>
+                <input type="email" id="email" name="email" required class="w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+              </div>
+              
+              <div class="field-wrapper">
+                <label for="company" class="block text-sm font-medium mb-2">Company</label>
+                <input type="text" id="company" name="company" class="w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+              </div>
+              
+              <div class="field-wrapper">
+                <label for="message" class="block text-sm font-medium mb-2">Project Details *</label>
+                <textarea id="message" name="message" rows="4" required class="w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500" placeholder="Tell us about your AI/ML challenges and goals..."></textarea>
+              </div>
+              
+              <button type="submit" class="btn btn-primary btn-lg w-full">Send Message</button>
+            </form>
+          </div>
+        </div>
       </div>
-      <p style="margin-top:1rem; font-size:0.9rem;">Phone: +63 XXX XXX XXXX • Email: contact@your-domain.com</p>
     </section>
+  </main>
 
-    <!-- Footer -->
-    <footer>
-      <div class="container footer-grid">
+  <!-- Footer -->
+  <footer class="bg-dark text-inverse py-16">
+    <div class="container">
+      <div class="grid grid-cols-4 gap-8 mb-8">
         <div>
-          <h4>Quick Links</h4>
-          <ul>
-            <li><a href="#services">Services</a></li>
-            <li><a href="#approach">Approach</a></li>
-            <li><a href="#integration">Integration &amp; Security</a></li>
-            <li><a href="#news">Insights</a></li>
-            <li><a href="#careers">Careers</a></li>
-            <li><a href="#about">About</a></li>
+          <div class="flex items-center gap-3 mb-6">
+            <img src="./Logo.png" alt="LX Next Logo" width="32" height="32" loading="lazy">
+            <span class="text-xl font-bold text-inverse">LX Next</span>
+          </div>
+          <p class="text-secondary mb-4">The Future of Intelligent Solutions</p>
+          <p class="text-sm text-muted">Leading excellence in AI and data science across the Philippines.</p>
+        </div>
+        
+        <div>
+          <h4 class="text-inverse mb-4">Services</h4>
+          <ul class="space-y-2 text-sm">
+            <li><a href="#services" class="text-secondary hover:text-inverse">AI Agents & Applications</a></li>
+            <li><a href="#services" class="text-secondary hover:text-inverse">Computer Vision</a></li>
+            <li><a href="#services" class="text-secondary hover:text-inverse">Predictive Intelligence</a></li>
+            <li><a href="#services" class="text-secondary hover:text-inverse">Systems Integration</a></li>
+            <li><a href="#services" class="text-secondary hover:text-inverse">Robotics & Automation</a></li>
           </ul>
         </div>
+        
         <div>
-          <h4>Contact</h4>
-          <p>Phone: +63 XXX XXX XXXX</p>
-          <p>Email: contact@your-domain.com</p>
-          <p>Address: Angeles City, Central Luzon, Philippines</p>
+          <h4 class="text-inverse mb-4">Company</h4>
+          <ul class="space-y-2 text-sm">
+            <li><a href="#about" class="text-secondary hover:text-inverse">About Us</a></li>
+            <li><a href="#approach" class="text-secondary hover:text-inverse">Our Approach</a></li>
+            <li><a href="#industries" class="text-secondary hover:text-inverse">Industries</a></li>
+            <li><a href="#contact" class="text-secondary hover:text-inverse">Contact</a></li>
+            <li><a href="#" class="text-secondary hover:text-inverse">Careers</a></li>
+          </ul>
         </div>
+        
         <div>
-          <h4>Legal &amp; Social</h4>
-          <ul>
-            <li><a href="#">Privacy Policy</a></li>
-            <li><a href="#">Terms of Service</a></li>
-            <li><a href="#">LinkedIn</a></li>
+          <h4 class="text-inverse mb-4">Legal & Resources</h4>
+          <ul class="space-y-2 text-sm">
+            <li><a href="#" class="text-secondary hover:text-inverse">Privacy Policy</a></li>
+            <li><a href="#" class="text-secondary hover:text-inverse">Terms of Service</a></li>
+            <li><a href="#" class="text-secondary hover:text-inverse">Case Studies</a></li>
+            <li><a href="#" class="text-secondary hover:text-inverse">Documentation</a></li>
+            <li><a href="#" class="text-secondary hover:text-inverse">LinkedIn</a></li>
           </ul>
         </div>
       </div>
-      <div class="container" style="text-align:center; color:#6b7280; border-top:1px solid #1f2937; padding-top:1rem;">
+      
+      <div class="border-t border-gray-700 pt-8 text-center text-sm text-muted">
         <p>&copy; 2025 LX Next (Partnership), Philippines. All rights reserved.</p>
-        <p>Where Intelligence Connects</p>
+        <p class="mt-2">Where Intelligence Connects • Connecting Vision to Reality</p>
       </div>
-    </footer>
-  </body>
+    </div>
+  </footer>
+
+  <!-- JavaScript -->
+  <script src="./js/main.js" defer></script>
+  
+  <!-- Analytics (Replace with your actual tracking ID) -->
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <!--
+  <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'GA_MEASUREMENT_ID');
+  </script>
+  -->
+</body>
 </html>
