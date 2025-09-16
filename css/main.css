@@ -479,12 +479,26 @@ section {
 .btn-ghost {
   background: transparent;
   color: var(--color-primary);
-  border: 2px solid transparent;
+  border: 2px solid var(--color-primary);
 }
 
 .btn-ghost:hover {
-  background: var(--bg-secondary);
-  color: var(--color-primary-hover);
+  background: var(--color-primary);
+  color: white;
+  border-color: var(--color-primary);
+}
+
+/* Ghost button on dark backgrounds */
+.bg-dark .btn-ghost {
+  background: transparent;
+  color: var(--color-accent);
+  border: 2px solid var(--color-accent);
+}
+
+.bg-dark .btn-ghost:hover {
+  background: var(--color-accent);
+  color: var(--color-secondary);
+  border-color: var(--color-accent);
 }
 
 /* Button Groups */
@@ -493,6 +507,45 @@ section {
   gap: var(--space-4);
   flex-wrap: wrap;
   align-items: center;
+}
+
+.btn-group.flex-col {
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.btn-group.items-start {
+  align-items: flex-start;
+}
+
+/* Contact Form Styling */
+.contact-form label {
+  display: block;
+  font-weight: var(--font-medium);
+  color: var(--text-primary);
+  margin-bottom: var(--space-2);
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  padding: var(--space-3) var(--space-4);
+  border: 2px solid var(--border-light);
+  border-radius: var(--radius-lg);
+  font-size: var(--text-base);
+  transition: all var(--transition-fast);
+  background: var(--bg-primary);
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(0, 102, 204, 0.1);
+}
+
+.field-wrapper {
+  margin-bottom: var(--space-6);
 }
 
 /* ==============================================
